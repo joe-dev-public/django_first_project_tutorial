@@ -1,0 +1,6 @@
+# Based on https://github.com/github/gitignore/blob/main/Python.gitignore
+# (Add to this file based on what needs to be ignored as tutorial progresses?)
+
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
