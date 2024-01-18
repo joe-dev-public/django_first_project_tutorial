@@ -11,6 +11,8 @@ import os
 
 from django.core.wsgi import get_wsgi_application
 
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'django_first_project_tutorial.settings')
+os.environ.setdefault(
+    "DJANGO_SETTINGS_MODULE", "django_first_project_tutorial.settings"
+)
 
 application = get_wsgi_application()
