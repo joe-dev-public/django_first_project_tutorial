@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>title</title>
+  </head>
+  <body>
+    <header>{{ old_content }}</header>
+    <main>
+      {% if data_we_care_about %}
+      <ul>
+        {% for release in data_we_care_about %}
+        <li><a href="/purchasing/{{ release.id }}">{{ release.title }}</a></li>
+        {% endfor %}
+      </ul>
+      {% else %}
+      <p>No releases.</p>
+      {% endif %}
+    </main>
+  </body>
+</html>

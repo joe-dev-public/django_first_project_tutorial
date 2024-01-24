@@ -1,6 +1,7 @@
 # from django.shortcuts import render
 
 from django.http import HttpResponse
+from django.template import loader
 from datetime import datetime
 
 from .models import Release
@@ -12,8 +13,12 @@ content = "Hello world, " + str(datetime.now())
 
 def index(request):
     last_fifty_releases = Release.objects.order_by("-added")[:50]
-    output = "<br>".join([r.title for r in last_fifty_releases])
-    return HttpResponse(content + "<br><br>Last 50 releases:<br><br>" + output)
+    template = loader.get_template("purchasing/index.html")
+    context = {
+        "old_content": content,
+        "data_we_care_about": last_fifty_releases,
+    }
+    return HttpResponse(template.render(context, request))
 
 
 def item(request, item_id):
