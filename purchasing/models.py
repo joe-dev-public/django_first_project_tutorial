@@ -5,6 +5,8 @@ from django.db import models
 
 
 class Release(models.Model):
+    added = models.DateTimeField("date added", auto_now_add=True)
+    modified = models.DateTimeField("date modified", auto_now=True)
     # https://docs.djangoproject.com/en/4.2/ref/models/fields/#charfield
     title = models.CharField("release title", max_length=200)
     # https://docs.djangoproject.com/en/4.2/ref/models/fields/#datefield
@@ -25,6 +27,8 @@ class Release(models.Model):
 
 
 class Item(models.Model):
+    added = models.DateTimeField("date added", auto_now_add=True)
+    modified = models.DateTimeField("date modified", auto_now=True)
     url = models.CharField("item URL", max_length=400)
     total_price = models.DecimalField("total price", max_digits=6, decimal_places=2)
     track_price = models.DecimalField("track price", max_digits=6, decimal_places=2)
