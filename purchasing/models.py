@@ -10,6 +10,19 @@ class Release(models.Model):
     # https://docs.djangoproject.com/en/4.2/ref/models/fields/#datefield
     date = models.DateField("date released")
 
+    # To-note:
+    #   - First arg of a class method references current instance of
+    #     class (by convention: "self").
+    #   - Double-underscore (aka "dunder") "[i]ndicates special attributes
+    #     and methods that Python provides"
+    #     (src: https://realpython.com/python-double-underscore/#public-interfaces-and-naming-conventions-in-python)
+    #   - https://docs.python.org/3.8/reference/lexical_analysis.html?highlight=dunder#reserved-classes-of-identifiers
+    #   - Here, __str__ provides the "nicely printable string representation
+    #     of an object".
+    #     (src: https://docs.python.org/3.8/reference/datamodel.html#object.__str__)
+    def __str__(self):
+        return self.title
+
 
 class Item(models.Model):
     url = models.CharField("item URL", max_length=400)
@@ -19,3 +32,6 @@ class Item(models.Model):
     # Not sure I'd actually want deleting a Release to delete an Item, but
     # let's just leave it like this for now.
     release = models.ForeignKey(Release, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.url
