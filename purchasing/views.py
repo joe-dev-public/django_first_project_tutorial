@@ -10,3 +10,11 @@ content = "Hello world, " + str(datetime.now())
 
 def index(request):
     return HttpResponse(content)
+
+
+def item(request, item_id):
+    return HttpResponse("Viewing item: %s" % item_id)
+
+
+def release(request, release_id):
+    return HttpResponse("Viewing release: %s" % release_id)
